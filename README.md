@@ -1,3 +1,12 @@
+## REVISION AFTER FINAL PROJECT PRESENTATION
+- Fixing button size on Dashboard.
+- Adding search feature for Activities at Dashboard Page.
+- Fixing minor issue on Navbar Styling.
+- Fixing middleware authentication issue:
+  - Now with role detection on cookies!
+  - User can no longer access /dashboard and /dashboard/:path*
+  - Admin can no longer access /cart, /cart/:path*, /my-transaction, and /my-transaction/:path*
+
 ## Demo App
 Visit this Vercel domain: https://tripnest-finpro-dibimbing.vercel.app/
 
