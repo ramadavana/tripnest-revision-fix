@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useUploadImage } from "@/contexts/UploadImageContext";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
 
 const DashboardActivities = () => {
   const [activities, setActivities] = useState([]);
@@ -42,6 +42,42 @@ const DashboardActivities = () => {
 
   const handleFilterByCategory = (categoryId) => {
     setSelectedCategory(categoryId);
+  };
+
+  const handleDelete = async (activityId) => {
+    const token = getCookie("token"); // Pastikan token disimpan dalam cookies saat login
+    if (!token) {
+      alert("You must be logged in to perform this action.");
+      return;
+    }
+
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this activity? This action cannot be undone."
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(
+        `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/delete-activity/${activityId}`,
+        {
+          headers: {
+            apiKey,
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Menghapus aktivitas dari state untuk memperbarui UI
+      const updatedActivities = activities.filter((activity) => activity.id !== activityId);
+      setActivities(updatedActivities);
+      setFilteredActivities(updatedActivities);
+
+      alert("Activity successfully deleted.");
+    } catch (error) {
+      console.error("Failed to delete activity:", error.response?.data || error.message);
+      alert("Failed to delete activity. Please try again later.");
+    }
   };
 
   useEffect(() => {
