@@ -7,8 +7,8 @@
   - User can no longer access /dashboard and /dashboard/:path*
   - Admin can no longer access /cart, /cart/:path*, /my-transaction, and /my-transaction/:path*
 
-## Demo App
-Visit this Vercel domain: https://tripnest-finpro-dibimbing.vercel.app/
+## Revision Demo App
+Visit this Vercel domain: https://tripnest-finpro-revision1.vercel.app/
 
 ## TripNest
 TripNest is a web-based Travel App designed for booking travel tickets, trips, events, and outdoor activities. Created as the Final Project for a Front-End Web Development Bootcamp, this project showcases the use of modern web technologies including Next.js (Pages Router), React.js (JavaScript/JSX), and TailwindCSS for styling.
